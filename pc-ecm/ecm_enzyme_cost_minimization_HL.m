@@ -275,8 +275,9 @@ catch
     pp.network.kinetics.Keq = r.Keq;
     [x_start, x1, x2] = find_polytope_centre([],[], N_forward', log_Keq_forward - Theta_min, x_min, x_max, 0*x_min);
   else
-    error('Flux distribution cannot be thermodynamically realised given the Keq values and metabolite bounds')
-    c = [];  u = [];  u_cost = [];  up = [];  A_forward = [];
+    %error('Flux distribution cannot be thermodynamically realised given the Keq values and metabolite bounds')
+    display(sprintf('Flux distribution cannot be thermodynamically realised given the Keq values and metabolite bounds'));
+    c = [];  u = [];  u_cost = [];  up = [];  A_forward = []; mca_info = []; c_min = []; c_max = []; u_min = []; u_max = []; r = []; u_capacity = []; eta_energetic = []; eta_saturation = []; multi = [];
     return
   end
 end
@@ -332,6 +333,24 @@ for it_method = 1:length(ecm_scores),
   display(sprintf('  o %s',ecm_score));
   
   [my_c, my_u, my_up, my_u_cost, my_A_forward, my_x, my_grad] = ecm_one_run(ecm_score,pp,x_min,x_max,x_init,lambda_regularisation, Theta_min,opt);
+  if(isempty(my_c))
+      c = [];
+      u = [];
+      u_cost = [];
+      up = [];
+      A_forward = [];
+      mca_info = [];
+      c_min = [];
+      c_max = [];
+      u_min = [];
+      u_max = [];
+      r = [];
+      u_capacity = [];
+      eta_energetic = [];
+      eta_saturation = [];
+      multi = [];
+      return;
+  end
 
   c.(ecm_score)         = my_c;
   u.(ecm_score)         = my_u;
