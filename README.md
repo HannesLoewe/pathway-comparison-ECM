@@ -15,3 +15,6 @@ Installation/Start:
 - modify pathway stoichiometry in PathwayStoichiometries.m
 - Adjust CO2/HCO3-
 - Adjust plotting section to your needs
+
+Differences to the original ECM Matlab implementation:
+- the ecm_enzyme_cost_minimization.m was modified: in case of occuring errors during ECM, the algorithm will not stop but rather terminate with empty return values. This was changed to be able to run multiple iterations without crashing. Crashes would occur when no feasible solution can be found.
