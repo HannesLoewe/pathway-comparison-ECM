@@ -11,7 +11,7 @@ Dependencies:
 
 Installation/Start:
 - Add the repository's folder to your MATLAB environment
-- Run Compare_Pathways_Std_Plot2.m as a starting point
+- Run CarbonFixationPBECMCompareFinal2.m as a starting point
 - modify pathway stoichiometry in PathwayStoichiometries.m
 - Adjust CO2/HCO3-
 - Adjust plotting section to your needs
