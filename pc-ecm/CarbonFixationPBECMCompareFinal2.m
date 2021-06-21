@@ -4,8 +4,8 @@
 % used to make predictions about pathway specific activities
 
 % define SBtab model and data file locations and names:
-modelfile = 'reactions_Composite22_model.tsv';
-datafile = 'reactions_Composite22_data.tsv';
+modelfile = 'Reactions_Composite22_model.tsv';
+datafile = 'Reactions_Composite22_data.tsv';
 
 % ------------------------ Parameter Balancing begin ---------------------
 % ------------------------------------------------------------------------
@@ -187,8 +187,8 @@ substrate = 'none';
 % choose the product for the cycles:
 cycle_ids = cycle_ids_GAP;
 %target_metabolite = 'C_oxaloacetate';
-%target_metabolite = 'C_d_glyceraldehyde_3_phosphate';
-target_metabolite = 'C_acetyl_coa';
+target_metabolite = 'C_d_glyceraldehyde_3_phosphate';
+%target_metabolite = 'C_acetyl_coa';
 %target_metabolite = 'C_pyruvate';
 
 % define target metabolite minimal concentration:
