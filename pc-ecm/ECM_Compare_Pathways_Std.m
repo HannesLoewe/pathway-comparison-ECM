@@ -86,7 +86,11 @@ if(exist('ignore_reactions'))
 end
 
 
-[c, u, u_cost, up, A_forward, mca_info, c_min, c_max, u_min, u_max, kinetics_new, u_capacity, eta_energetic, eta_saturation] = ecm_enzyme_cost_minimization_HL(subnetwork, subnetwork.kinetics, vv(vv~=0), ecm_options);
+%i_ECM
+% convert KM matrix to sparse matrix
+subnetwork.kinetics.KM(isnan(subnetwork.kinetics.KM)) = 0;
+subnetwork.kinetics.KM = sparse(subnetwork.kinetics.KM);
+[c, u, u_cost, up, A_forward, mca_info, c_min, c_max, u_min, u_max, kinetics_new, u_capacity, eta_energetic, eta_saturation] = ecm_enzyme_cost_minimization(subnetwork, subnetwork.kinetics, vv(vv~=0), ecm_options);
 %fluxes_at_optimum = modular_velocities('cs', subnetwork.N, subnetwork.regulation_matrix, find(subnetwork.external), u.emc4cm, c.emc4cm, subnetwork.kinetics.KA, subnetwork.kinetics.KI, subnetwork.kinetics.KM, subnetwork.kinetics.KV, subnetwork.kinetics.Keq, subnetwork.kinetics.h);
 
 
