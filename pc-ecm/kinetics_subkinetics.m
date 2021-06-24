@@ -17,8 +17,10 @@ for j = 1:numel(properties)
     % Parameter with only rows
     sub_kinetic_data.c.scaling = kinetic_data.c.scaling;
     sub_kinetic_data.c.(properties{j}) = kinetic_data.c.(properties{j})(ind_m); 
-    sub_kinetic_data.u.scaling = kinetic_data.u.scaling;
-    sub_kinetic_data.u.(properties{j}) = kinetic_data.u.(properties{j})(ind_reaction);   
+    if(isfield(kinetic_data,'u'))
+        sub_kinetic_data.u.scaling = kinetic_data.u.scaling;
+        sub_kinetic_data.u.(properties{j}) = kinetic_data.u.(properties{j})(ind_reaction);
+    end
     sub_kinetic_data.Keq.scaling = kinetic_data.Keq.scaling;
     sub_kinetic_data.Keq.(properties{j}) = kinetic_data.Keq.(properties{j})(ind_reaction);
     sub_kinetic_data.Kcatf.scaling = kinetic_data.Kcatf.scaling;
