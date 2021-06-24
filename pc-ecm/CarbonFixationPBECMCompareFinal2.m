@@ -124,7 +124,7 @@ for i=1:nr
         task   = parameter_balancing_task(subnetwork, sub_kinetic_data, parameter_prior, model_quantities, basic_quantities, pseudo_quantities);
         result = parameter_balancing_calculation(task, parameter_prior, pb_options);
         % run the actual algorithm
-        [r_mode,r_mean,r_std,r_geom_mean,r_geom_std,r_orig,r_samples] = parameter_balancing_output(result, sub_kinetic_data_orig, pb_options);
+        [r_mode,r_mean,r_std,r_geom_mean,r_geom_std,r_orig,r_samples] = parameter_balancing_output(result, sub_kinetic_data_orig, pb_options, subnetwork);
         
         if(abs(log(r_mode.Keq)-log(r_orig.Keq)) < 0.1 || i == ind_malyl_CoA_lyase || sub_kinetic_data.Keq.mean > 10^10 || sub_kinetic_data.Keq.mean < 10^-10) % std-deviation of Keq of malyl_CoA_lyase is very high, the estimation from the kinetics is hence probably better
             Keq_check = 1;
@@ -202,7 +202,7 @@ if(~isempty(substrate_demand))
 end
 
 %randomize the kinetic parameters according to std from parameter balancing
-n_rand = 10;
+n_rand = 1;
 
 conc_max_2 = conc_max;
 conc_min_2 = conc_min;
