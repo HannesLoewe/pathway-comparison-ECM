@@ -332,7 +332,7 @@ for it_method = 1:length(ecm_scores),
   ecm_score = ecm_scores{it_method};
   display(sprintf('  o %s',ecm_score));
   
-  [my_c, my_u, my_up, my_u_cost, my_A_forward, my_x, my_grad] = ecm_one_run(ecm_score,pp,x_min,x_max,x_init,lambda_regularisation, Theta_min,opt);
+  [my_c, my_u, my_up, my_u_cost, my_A_forward, my_x, my_grad] = ecm_one_run_HL(ecm_score,pp,x_min,x_max,x_init,lambda_regularisation, Theta_min,opt);
   if(isempty(my_c))
       c = [];
       u = [];
@@ -416,7 +416,7 @@ for it_method = 1:length(ecm_scores),
       A_forward_init(ind_not_scored) = nan;
       A_forward.initial(:,1+itt)     = A_forward_init;
       
-      [my_c, my_u, my_up, my_u_cost, my_A_forward] = ecm_one_run(ecm_score,pp,x_min,x_max,x_init,lambda_regularisation, Theta_min,opt);
+      [my_c, my_u, my_up, my_u_cost, my_A_forward] = ecm_one_run_HL(ecm_score,pp,x_min,x_max,x_init,lambda_regularisation, Theta_min,opt);
       
       c.(ecm_score)(:,1+itt)         = my_c;
       u.(ecm_score)(:,1+itt)         = my_u;
