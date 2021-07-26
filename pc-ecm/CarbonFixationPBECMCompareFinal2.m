@@ -179,13 +179,13 @@ PathwayStochiometries
 
                  
 % choose the substrate for the cycles:
-substrate = 'none';
+%substrate = 'none';
 %substrate = 'C_methanol';
-%substrate = 'C_formate';
+substrate = 'C_formate';
 %substrate = 'C_h2';
 
 % choose the product for the cycles:
-cycle_ids = cycle_ids_GAP;
+cycle_ids = cycle_ids_GAP_Formate;
 %target_metabolite = 'C_oxaloacetate';
 target_metabolite = 'C_d_glyceraldehyde_3_phosphate';
 %target_metabolite = 'C_acetyl_coa';
@@ -202,7 +202,7 @@ if(~isempty(substrate_demand))
 end
 
 %randomize the kinetic parameters according to std from parameter balancing
-n_rand = 1;
+n_rand = 3;
 
 conc_max_2 = conc_max;
 conc_min_2 = conc_min;
@@ -236,9 +236,9 @@ Compare_Pathways_Std_Plot2('',cycle_ids,Cap_Cell,Cap_Rev_Cell,Cap_Rev_Sat_Cell,S
 switch(target_metabolite)
     case 'C_d_glyceraldehyde_3_phosphate'
         CapRevSat_Plot('',cycle_ids,Cap_Cell,Cap_Rev_Cell,Cap_Rev_Sat_Cell,SubNetReactNames_Cell,[1 2 14],1,3,{'CBB cycle','rCCC','2-HG-rTCA'},fontname);
-        set(gcf,'Units','centimeters','position',[10 10 9 20]);
+        set(gcf,'Units','centimeters','position',[18.5 1 12 20]);
     case 'C_acetyl_coa'
         CapRevSat_Plot('',cycle_ids,Cap_Cell,Cap_Rev_Cell,Cap_Rev_Sat_Cell,SubNetReactNames_Cell,[1 11 17],1,3,{'CBB cycle','rCCC','2-HG-rTCA'},fontname);
-        set(gcf,'Units','centimeters','position',[10 10 9 20]);
+        set(gcf,'Units','centimeters','position',[18.5 1 12 20]);
 end
 

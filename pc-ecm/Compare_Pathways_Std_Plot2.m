@@ -30,10 +30,10 @@ bf_colormap =   [51 34 136; % Calvin cycle
 %                 50 50 50]/255; % 2-HA/rTCA
 pathway_names = {'CBB-like','HP/HB (Crenarchaea)','HP/HB (Thaumarchaea)','HP bicycle','Serine cycle','RuMP cycle','MOG/rCCC','CETCH cycle','rGlyP','2-HG-rTCA cycle'};
 
-figure
-sgtitle(str_title);
-sp_y = round(sqrt(numel(cycle_ids)*3/4)+0.49);
-sp_x = round(sp_y*4/3+0.49);
+% figure
+% sgtitle(str_title);
+% sp_y = round(sqrt(numel(cycle_ids)*3/4)+0.49);
+% sp_x = round(sp_y*4/3+0.49);
 
 cycle_names = cell(numel(cycle_ids),1);
 
@@ -52,21 +52,21 @@ for i_ECM = 1:numel(cycle_ids)
     end
     %cycle_names{i_ECM} = [cycle_names{i_ECM} '}'];
     M = [Cap_Cell{i_ECM}, Cap_Rev_Cell{i_ECM} - Cap_Cell{i_ECM}, Cap_Rev_Sat_Cell{i_ECM} - Cap_Rev_Cell{i_ECM}];
-    subplot(sp_y, sp_x, i_ECM);
-    h = bar(1:length(Cap_Cell{i_ECM}),M, 'stacked','EdgeColor','none','BarWidth',0.8);
+%     subplot(sp_y, sp_x, i_ECM);
+%     h = bar(1:length(Cap_Cell{i_ECM}),M, 'stacked','EdgeColor','none','BarWidth',0.8);
     my_colormap = bf_colormap([8 7 6],1:3);%[1-((1-bf_colormap(5,1:3))); 1-((1-bf_colormap(5,1:3))*0.8); 1-((1-bf_colormap(5,1:3))*0.6)];%[0.35 0.35 0.9; 0.8 0.2 0.7; 1 0.3 0.2];
-    for it = 1:length(h)
-      h(it).FaceColor = 'Flat';
-      h(it).CData = my_colormap(it,:);
-    end
-    ylabel('Enzyme demand [mg/L]');
-    set(gca,'Xtick',1:length(Cap_Cell{i_ECM}),'xticklabel',SubNetReactNames_Cell{i_ECM},'TickLabelInterpreter','none','FontName',fontname);
-    xtickangle(45);
-    legend('Capacity','Reversibility','Saturation','Location','SouthWest');
-    title(cycle_names{i_ECM},'FontName',fontname);
-    ax = gca;
-    ax.XAxis.TickLength = [0 0];
-    ax.XAxis.FontSize = 8;
+%     for it = 1:length(h)
+%       h(it).FaceColor = 'Flat';
+%       h(it).CData = my_colormap(it,:);
+%     end
+%     ylabel('Enzyme demand [mg/L]');
+%     set(gca,'Xtick',1:length(Cap_Cell{i_ECM}),'xticklabel',SubNetReactNames_Cell{i_ECM},'TickLabelInterpreter','none','FontName',fontname);
+%     xtickangle(45);
+%     legend('Capacity','Reversibility','Saturation','Location','SouthWest');
+%     title(cycle_names{i_ECM},'FontName',fontname);
+%     ax = gca;
+%     ax.XAxis.TickLength = [0 0];
+%     ax.XAxis.FontSize = 8;
 end
 
 % apply different colors to each primary pathway
@@ -141,7 +141,7 @@ end
 % Horizontal Bar plot: activities
 legend_unique = zeros(10,1);
 legend_handles = [];
-figure('Units','centimeters','position',[10 10 18.5 18.5]);
+figure('Units','centimeters','position',[0 2 18.5 18.5]);
 subplot(2,1,1);
 hold on
 % my_colormap = [0.35 0.35 0.9; 0.8 0.2 0.7; 1 0.3 0.2];
